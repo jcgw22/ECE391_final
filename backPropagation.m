@@ -4,38 +4,38 @@ train_info.training_percentage = 1/3;
 train_info.Number_of_samples = length(data);
 train_info.Number_of_traning = length(data)*(train_info.training_percentage);
 train_info.Number_of_testing = length(data)*(1-train_info.training_percentage);
-
+Number_of_neurons = [2,20,5,1];
 
 %%========== Step 1: Initialization of Multilayer Perceptron (MLP) ========
 
 fprintf('Initializing the MLP ...\n');
-Number_of_neurons = [2,20,1];
 
-%w = cell(2,1); 
-%w1{1} = rand(n_hd,n_in+1)./2  - 0.25; % initial weights of dim: n_hd x n_in between input layer to hidden layer
-w1{1} = rand(Number_of_neurons(2),Number_of_neurons(1)+1); % initial weights of dim: n_hd x n_in between input layer to hidden layer
-dw0{1}= zeros(Number_of_neurons(2),Number_of_neurons(1)+1); %rand(n_hd,n_in)./2  - 0.25;%
-%w1{2} = rand(n_ou,n_hd+1)./2  - 0.25; % initial weights of dim: n_ou x n_hd between hidden layer to output layer
-w1{2} = rand(Number_of_neurons(end),Number_of_neurons(end-1)+1);
-dw0{2}= zeros(Number_of_neurons(end),Number_of_neurons(end-1)+1); %rand(n_ou,n_hd)./2  - 0.25;%
+
+w1 = cell(length(Number_of_neurons)-1,1); 
+for i = 1:length(Number_of_neurons)-1% initialize weights of dim: next_neurons x current_neurons (aka  between input to hidden layer or hiden to output )
+    w1{i} = rand(Number_of_neurons(i+1),Number_of_neurons(i)+1); 
+    dw0{i}= zeros(Number_of_neurons(i+1),Number_of_neurons(i)+1); 
+end
+
 num_Epoch = 50;      % number of epochs
 mse_thres = 1E-3;    % MSE threshold
 mse_train = Inf;     % MSE for training data
 epoch = 1;
-alpha = 0;         % momentum constant
-err    = 0;    % a counter to denote the number of error outputs
-%eta2  = 0.1;         % learning-rate for output weights
-%eta1  = 0.1;          % learning-rate for hidden weights
-eta1 = [0.1: (1E-5 - 0.1)/(num_Epoch-1) :1E-5];
-eta2 = [0.1: (1E-5 - 0.1)/(num_Epoch-1) :1E-5];
+alpha = 0;           % momentum constant
+err    = 0;          % a counter to denote the number of error outputs
+%eta2  = 0.1;         
+%eta1  = 0.1;   
+for i = 1:length(Number_of_neurons)-1% generate learning-rate
+eta{i} = [0.1: (1E-5 - 0.1)/(num_Epoch-1) :1E-5];% learning-rate for output weights
+end
 %%========= Preprocess the input data : remove mean and normalize =========
 mean1 = [mean(data(1:2,:)')';0];
-for i = 1:train_info.Number_of_samples,
-    nor_data(:,i) = data_shuffled(:,i) - mean1;
+for i = 1:train_info.Number_of_samples
+    normalized_data(:,i) = data_shuffled(:,i) - mean1;
 end
-max1  = [max(abs(nor_data(1:2,:)'))';1];
-for i = 1:train_info.Number_of_samples,
-    nor_data(:,i) = nor_data(:,i)./max1;
+max1  = [max(abs(normalized_data(1:2,:)'))';1];
+for i = 1:train_info.Number_of_samples
+    normalized_data(:,i) = normalized_data(:,i)./max1;
 end
 
 %%======================= Main Loop for Training ==========================
@@ -43,38 +43,44 @@ st = cputime;
 fprintf('Training the MLP using back-propagation ...\n');
 fprintf('  ------------------------------------\n');
 while mse_train > mse_thres && epoch <= num_Epoch
-    fprintf('   Epoch #: %d ->',epoch);
     %% shuffle the training data for every epoch
-    [n_row, n_col] = size(nor_data);
+    [n_row, n_col] = size(normalized_data);
     shuffle_seq = randperm(train_info.Number_of_traning);
-    nor_data1 = nor_data(:,shuffle_seq);
+    normalized_data1 = normalized_data(:,shuffle_seq);
    
     %% using all data for training for this epoch
     for i = 1:train_info.Number_of_traning,
-        %% Forward computation
-        x  = [nor_data1(1:2,i);1];     % fetching input data from database
-        %d  = myint2vec(nor_data1(3,i));% fetching desired response from database
-        d  = nor_data1(3,i);% fetching desired response from database
-        hd = [hyperb(w1{1}*x);1];          % hidden neurons are nonlinear
-        o  = hyperb(w1{2}*hd);         % output neuron is nonlinear
-        e(:,i)  = d - o;
+        %% FeedForward computation
+        hiddenR = cell(length(Number_of_neurons)-1,1);
+        x  = [normalized_data1(1:2,i);1];     % fetching input data [x,y,1]
+        hiddenR{1} = x ;
+        d  = normalized_data1(3,i);% fetching desired response 
         
-        %% Backward computation
-        delta_ou = e(:,i).*d_hyperb(w1{2}*hd);            % delta for output layer
-        delta_hd = d_hyperb(w1{1}*x).*(w1{2}(:,1:n_hd)'*delta_ou);  % delta for hidden layer
-        dw1{1} = eta1(epoch)*delta_hd*x';
-        dw1{2} = eta2(epoch)*delta_ou*hd';
-              
-        %% weights update
-        w2{1} = w1{1} + alpha*dw0{1} + dw1{1};  % weights input -> hidden
-        w2{2} = w1{2} + alpha*dw0{2} + dw1{2};  % weights hidden-> output
+        for j = 2:length(Number_of_neurons)-1
+            hiddenR{j} = [hyperb(w1{j-1}*hiddenR{j-1} );1];          % hidden neurons responce 
+        end
+        o  = hyperb(w1{end}*hiddenR{end});         % output neuron is nonlinear
+        error_(:,i)  = d - o;
         
+        %% BackPropagation computation
+        delta = cell(length(Number_of_neurons)-1,1);
+        delta_ou = error_(:,i).*d_hyperb(w1{end}*hiddenR{end});            % delta for output layer error*
+        delta{end} = error_(:,i).*d_hyperb(w1{end}*hiddenR{end});            % delta for output layer error*
+        for j = length(Number_of_neurons)-2:-1:1
+            delta{j} = d_hyperb(w1{j}*hiddenR{j}).*(w1{j+1}(:,1:Number_of_neurons(j+1))'*delta{j+1});
+        end
+        for j = 1:length(Number_of_neurons)-1
+            dw1{j} = eta{j}(epoch)*delta{j}*hiddenR{j}';
+            %% weights update
+            w2{j} = w1{j} + alpha*dw0{j} + dw1{j};  % weights input -> hidden
+        end
         %% move weights one-step
         dw0 = dw1;
         w1  = w2;
     end
-    mse(epoch) =sum(mean(e'.^2));
+    mse(epoch) =sum(mean(error_'.^2));
     mse_train = mse(epoch);
+    fprintf('   Epoch #: %d ->',epoch);
     fprintf('MSE = %f\n',mse_train);
     epoch = epoch + 1;
 end
@@ -82,3 +88,10 @@ fprintf('   Points trained : %d\n',train_info.Number_of_traning);
 fprintf('  Epochs conducted: %d\n',epoch-1);
 fprintf('        Time cost : %4.2f seconds\n',cputime - st);
 fprintf('  ------------------------------------\n');
+
+
+%%=============== Plotting Learning Curve =================================
+figure;
+plot(mse,'k');
+title('Learning curve');
+xlabel('Number of epochs');ylabel('MSE');
