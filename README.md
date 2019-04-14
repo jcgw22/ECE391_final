@@ -31,13 +31,19 @@
     c.	For the SOM: dimension of SOM, and others.
     
     d.	Input data file.
+    
     e.	The data format: column or row.
+    
     f.	Numbers of total data sample sets (or auto detection by your code).
+    
     g.	The % of training, validation, and test; or the numbers of training, validation, and test.
+    
     h.	Training stop criteria:
+    
         i.	MSE
         ii.	% of error
         iii.	Number of epochs
+        
 5.	The output files of the training results, validation results, and test results for each input data set, excel file is preferred.
 6.	Confusion tables of training results, validation results, and test results
 7.	ROC of training results, validation results, and test result
