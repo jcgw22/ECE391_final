@@ -6,19 +6,30 @@
 ### Objects: to design and develop a neural network utility (NNU) include backpropagation, SOM, SVM. 
 #### Design specifications:
 1.	The core of the project includes three algorithm:
+
     a.	Multiple layer of network using the back propagation.
+    
     b.	Self-organizing map
+    
     c.	Support vector machine
+    
 2.	The MATLAB GUI or C# or other forms of code can be used for the operation of the utility.
 3.	Once a method is selected, different menus will be used for different algorithms. 
 4.	The parameters can be entered from menus include  (not limited to) (depending on the algorithm):
     a.	For the backpropagation: 
+    
         i.	Number of hidden layers
+        
         ii.	Number of neurons on each layer include input layer and output layer
+        
         iii.	Selection of the sigmoid functions or nonlinear function.
-        iv.	others  
+        
+        iv.	others
+        
     b.	For SVM: Upper bound C, sigma for RBF, …, and other parameters.
+    
     c.	For the SOM: dimension of SOM, and others.
+    
     d.	Input data file.
     e.	The data format: column or row.
     f.	Numbers of total data sample sets (or auto detection by your code).
