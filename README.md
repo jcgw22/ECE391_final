@@ -1,10 +1,10 @@
 # ECE391_final
 
-###Final Project
-##ECE 573/692 Neural Network
-#Due data: 12/20/2018
-#Objects: to design and develop a neural network utility (NNU) include backpropagation, SOM, SVM. 
-#Design specifications:
+### Final Project
+## ECE 573/692 Neural Network
+# Due data: 12/20/2018
+# Objects: to design and develop a neural network utility (NNU) include backpropagation, SOM, SVM. 
+# Design specifications:
 1.	The core of the project includes three algorithm:
     a.	Multiple layer of network using the back propagation.
     b.	Self-organizing map
