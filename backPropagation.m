@@ -5,7 +5,9 @@ train_info.Number_of_samples = length(data);
 train_info.Number_of_traning = length(data)*(train_info.training_percentage);
 train_info.Number_of_testing = length(data)*(1-train_info.training_percentage);
 Number_of_neurons = [2,20,5,1];
-
+num_Epoch = 50;      % number of epochs
+mse_thres = 1E-3;    % MSE threshold
+mse_train = Inf;     % MSE for training data
 %%========== Step 1: Initialization of Multilayer Perceptron (MLP) ========
 
 fprintf('Initializing the MLP ...\n');
@@ -17,9 +19,7 @@ for i = 1:length(Number_of_neurons)-1% initialize weights of dim: next_neurons x
     dw0{i}= zeros(Number_of_neurons(i+1),Number_of_neurons(i)+1); 
 end
 
-num_Epoch = 50;      % number of epochs
-mse_thres = 1E-3;    % MSE threshold
-mse_train = Inf;     % MSE for training data
+
 epoch = 1;
 alpha = 0;           % momentum constant
 err    = 0;          % a counter to denote the number of error outputs
