@@ -1,19 +1,32 @@
-clear
-
- [data, data_shuffled] = halfmoon(10,6,-4,3000);
-%data = createXOR(3000);
-%data_shuffled =createXOR(3000);
-train_info.training_percentage = 3/12;
+% clear
+% 
+% [data, data_shuffled] = halfmoon(10,6,-4,3000); 
+% %data = createXOR(3000);
+% data= data_shuffled;
+% train_info.training_percentage = 3/12;
+% 
+% Number_of_neurons = [2,20,5,1];
+% num_Epoch = 50;      % number of epochs
+% mse_thres = 1E-3;    % MSE threshold
+% 
+% train_info.Number_of_samples = length(data);
+% train_info.Number_of_traning = length(data)*(train_info.training_percentage);
+% train_info.Number_of_testing = length(data)*(1-train_info.training_percentage);
+%========== : Initialization of Multilayer Perceptron (MLP) ========
+clc
+fprintf('opening file ...\n');
+data = readmatrix(filename);
+if strcmp(dataFormat,'Column')
+data=data';
+end
+data_shuffled=data;
 train_info.Number_of_samples = length(data);
 train_info.Number_of_traning = length(data)*(train_info.training_percentage);
 train_info.Number_of_testing = length(data)*(1-train_info.training_percentage);
-Number_of_neurons = [2,20,5,1];
-num_Epoch = 5;      % number of epochs
-mse_thres = 1E-3;    % MSE threshold
-mse_train = Inf;     % MSE for training data
-%========== : Initialization of Multilayer Perceptron (MLP) ========
 
-fprintf('Initializing the MLP ...\n');
+
+
+fprintf('Initializing the Multy Layerd Percepton ...\n');
 
 
 w1 = cell(length(Number_of_neurons)-1,1); 
@@ -22,7 +35,7 @@ for i = 1:length(Number_of_neurons)-1% initialize weights of dim: next_neurons x
     dw0{i}= zeros(Number_of_neurons(i+1),Number_of_neurons(i)+1); 
 end
 
-
+mse_train = Inf;     % MSE for training data
 epoch = 1;
 alpha = 0;           % momentum constant
 err    = 0;          % a counter to denote the number of error outputs
