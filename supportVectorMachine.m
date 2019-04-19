@@ -46,11 +46,11 @@ b0     = 0;    % Implicit bias, 0 for RBF kernal
 
 %%==== Step 1: Preprocess the input data, remove mean and normalize =======
 mean0 = [mean(data(1:2,:)')';0];         % mean of the original data
-for i = 1:num_samp,
+for i = 1:num_samp
     data_norm(:,i) = data_shuffled(:,i) - mean0;
 end
 max0  = [max(abs(data_norm(1:2,:)'))';1];% max of the original data
-for i = 1:num_samp,
+for i = 1:num_samp
     data_norm(:,i) = data_norm(:,i)./max0;
 end
 
@@ -118,8 +118,8 @@ for i=1:num_te
 end
 Y_pred = sign(H_te*alpha + b0);
 % Calculate testing error rate
-for i = 1:num_te,
-    if abs(Y_pred(i)-Y_te(i)) > 1E-6,
+for i = 1:num_te
+    if abs(Y_pred(i)-Y_te(i)) > 1E-6
         err = err + 1;
     end
 end

@@ -1,5 +1,3 @@
-# ECE391_final
-
 # Final Project
 ## ECE 573/692 Neural Network
 ### Due data: 12/20/2018
@@ -16,6 +14,7 @@
 2.	The MATLAB GUI or C# or other forms of code can be used for the operation of the utility.
 3.	Once a method is selected, different menus will be used for different algorithms. 
 4.	The parameters can be entered from menus include  (not limited to) (depending on the algorithm):
+    
     a.	For the backpropagation: 
     
         i.	Number of hidden layers
