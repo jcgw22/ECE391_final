@@ -60,5 +60,4 @@ fprintf('  ------------------------------------\n');
 figure;
 svcplot_train(X_tr,Y_tr,alpha,b0,epsilon,p1,mean0,max0);
 xlabel('x');ylabel('y');
-title(['Classification using SVM with dist = ',num2str(dist),', radius = ',...
-       num2str(rad), ' and width = ',num2str(width), '(Training)']);
+
