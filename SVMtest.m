@@ -24,6 +24,18 @@ figure;
 svcplot_test(X_tr,Y_tr,X_te,Y_pred,alpha,b0,epsilon,p1,mean0,max0);
 xlabel('x');ylabel('y');
 
+figure
+fprintf('ploting confucion matrix\n');
+dataPos = find(Y_pred<0);
+Y_pred2=Y_pred;
+Y_pred2(dataPos)=0;
+Y_pred2=Y_pred2';
+ans2=Y_te';
+dataPos = find(ans2<0);
+ans2(dataPos)=0;
+plotconfusion(ans2,Y_pred2)
+
+
    
 fprintf('Mission accomplished!\n');
 fprintf('_________________________________________\n');
