@@ -1,7 +1,6 @@
-function som = SelfOrganazingMapTrain(trainingData,nfeatures, ndim, nepochs, ntrainingvectors, eta0, etadecay, sgm0, sgmdecay, showMode)
-%SOMSimple Simple demonstration of a Self-Organizing Map that was proposed by Kohonen.
-%   sommap = SOMSimple(nfeatures, ndim, nepochs, ntrainingvectors, eta0, neta, sgm0, nsgm, showMode) 
-%   trains a self-organizing map with the following parameters
+function som = SelfOrganazingMapTrain(trainingData,nfeatures, ndim, nepochs, ntrainingvectors, eta0, etadecay, sgm0, sgmdecay)
+%       som = SelfOrganazingMapTrain(trainingData,nfeatures, ndim, nepochs, ntrainingvectors, eta0, etadecay, sgm0, sgmdecay, showMode)
+%       trains a self-organizing map with the following parameters
 %       nfeatures        - dimension size of the training feature vectors
 %       ndim             - width of a square SOM map
 %       nepochs          - number of epochs used for training
@@ -12,34 +11,17 @@ function som = SelfOrganazingMapTrain(trainingData,nfeatures, ndim, nepochs, ntr
 %                          is used to determine the neighbours of the best 
 %                          matching unit (BMU)
 %       sgmdecay         - exponential decay rate of the Gaussian variance 
-%       showMode         - 0: do not show output, 
-%                          1: show the initially randomly generated SOM map 
-%                             and the trained SOM map,
-%                          2: show the trained SOM map after each update
-%
-%   For example: A demonstration of an SOM map that is trained by RGB values
-%           
-%       som = SelfOrganazingMap(3,60,10,100,0.1,0.05,20,0.05,2);
-%       % It uses:
-%       %   3    : dimensions for training vectors, such as RGB values
-%       %   60x60: neurons
-%       %   10   : epochs
-%       %   100  : training vectors
-%       %   0.1  : initial learning rate
-%       %   0.05 : exponential decay rate of the learning rate
-%       %   20   : initial Gaussian variance
-%       %   0.05 : exponential decay rate of the Gaussian variance
-%       %   2    : Display the som map after every update
+%       
 
 nrows = ndim;
 ncols = ndim;
 
 som = rand(nrows,ncols,nfeatures);
 
-if showMode >= 1
+
     fig = figure;
     displaySOMmap(fig, 1, 'Randomly initialized SOM', som, nfeatures,ndim);
-end
+
 
 
 scatter(trainingData(:,1),trainingData(:,2));
@@ -97,15 +79,15 @@ for t = 1:nepochs
         % entire SOM map
         som(from_row:to_row,from_collum:to_collum,:) = neighbour_Neurons;
 
-        if showMode == 2
+       
             displaySOMmap(fig, 2, ['Epoch: ',num2str(t),'/',num2str(nepochs),', Training Vector: ',num2str(ntraining),'/',num2str(ntrainingvectors)], som, nfeatures,ndim);
-        end        
+           
     end
 end
 
-if showMode == 1
+
     displaySOMmap(fig, 2, 'Trained SOM', som, nfeatures,ndim);
-end
+
 
 function ed = getEuclideanDistance(trainingVector, sommap, nrows, ncols, nfeatures)
 
@@ -125,10 +107,10 @@ neuronList = reshape(sommap,ndim*ndim,nfeatures);
 figure(fig);
 subplot(1,2,nsubplot);
 if nfeatures >= 3
-    %imagesc(sommap(:,:,1:3));
+  
     scatter(neuronList(:,2),neuronList(:,1));
 else
-    %imagesc(sommap(:,:,1));
+ 
     scatter(neuronList(:,2),neuronList(:,1));
 end
 axis square;
