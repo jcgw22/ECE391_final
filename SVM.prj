@@ -1,0 +1,93 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration file="C:\Users\jcgw2\Documents\MATLAB\ECE692FP\SVM.prj" location="C:\Users\jcgw2\Documents\MATLAB\ECE692FP" name="SVM" target="target.mlapps" target-name="Package App">
+    <param.appname>SVM</param.appname>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary />
+    <param.description />
+    <param.screenshot>C:\Users\jcgw2\AppData\Local\Temp\tp5fd60c38_a496_495b_9dae_fe05fcaa00a8.png</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms>
+      <item>win64</item>
+    </param.platforms>
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>a4edc7e3-304d-43a8-9b87-c49ba3aff088</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.summary />
+      <param.description />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\SVM.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\qp.mexw64</file>
+      <file>${PROJECT_ROOT}\red_black_colmap.mat</file>
+      <file>${PROJECT_ROOT}\supportVectorMachine.m</file>
+      <file>${PROJECT_ROOT}\svcplot_test.m</file>
+      <file>${PROJECT_ROOT}\svcplot_train.m</file>
+      <file>${PROJECT_ROOT}\SVM_T.mat</file>
+      <file>${PROJECT_ROOT}\SVMtest.m</file>
+      <file>${PROJECT_ROOT}\SVMtrain.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\jcgw2\Documents\MATLAB" name="ECE692FP" optional="false">C:\Users\jcgw2\Documents\MATLAB\ECE692FP</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
