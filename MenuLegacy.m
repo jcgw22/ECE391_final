@@ -78,6 +78,7 @@ function SOMBtn_Callback(hObject, eventdata, handles)
 % hObject    handle to SOMBtn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+SOMLegacy
 
 
 % --- Executes on button press in BPbtn.
@@ -85,6 +86,7 @@ function BPbtn_Callback(hObject, eventdata, handles)
 % hObject    handle to BPbtn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+BackPorpagationLegacy
 
 
 % --- Executes on button press in SVMBtn.
@@ -92,3 +94,4 @@ function SVMBtn_Callback(hObject, eventdata, handles)
 % hObject    handle to SVMBtn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+SVMlegacy

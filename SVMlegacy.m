@@ -22,7 +22,7 @@ function varargout = SVMlegacy(varargin)
 
 % Edit the above text to modify the response to help SVMlegacy
 
-% Last Modified by GUIDE v2.5 15-May-2019 18:30:13
+% Last Modified by GUIDE v2.5 30-May-2019 17:39:23
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -74,18 +74,18 @@ varargout{1} = handles.output;
 
 
 
-function C_v_Callback(hObject, eventdata, handles)
-% hObject    handle to C_v (see GCBO)
+function C_Callback(hObject, eventdata, handles)
+% hObject    handle to C (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of C_v as text
-%        str2double(get(hObject,'String')) returns contents of C_v as a double
+% Hints: get(hObject,'String') returns contents of C as text
+%        str2double(get(hObject,'String')) returns contents of C as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function C_v_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to C_v (see GCBO)
+function C_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to C (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -97,18 +97,18 @@ end
 
 
 
-function Sigma_v_Callback(hObject, eventdata, handles)
-% hObject    handle to Sigma_v (see GCBO)
+function S_Callback(hObject, eventdata, handles)
+% hObject    handle to S (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of Sigma_v as text
-%        str2double(get(hObject,'String')) returns contents of Sigma_v as a double
+% Hints: get(hObject,'String') returns contents of S as text
+%        str2double(get(hObject,'String')) returns contents of S as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function Sigma_v_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Sigma_v (see GCBO)
+function S_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to S (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -120,18 +120,18 @@ end
 
 
 
-function THR_v_Callback(hObject, eventdata, handles)
-% hObject    handle to THR_v (see GCBO)
+function T_Callback(hObject, eventdata, handles)
+% hObject    handle to T (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of THR_v as text
-%        str2double(get(hObject,'String')) returns contents of THR_v as a double
+% Hints: get(hObject,'String') returns contents of T as text
+%        str2double(get(hObject,'String')) returns contents of T as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function THR_v_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to THR_v (see GCBO)
+function T_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to T (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -143,18 +143,18 @@ end
 
 
 
-function InputData_Callback(hObject, eventdata, handles)
-% hObject    handle to InputData (see GCBO)
+function IND_Callback(hObject, eventdata, handles)
+% hObject    handle to IND (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of InputData as text
-%        str2double(get(hObject,'String')) returns contents of InputData as a double
+% Hints: get(hObject,'String') returns contents of IND as text
+%        str2double(get(hObject,'String')) returns contents of IND as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function InputData_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to InputData (see GCBO)
+function IND_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to IND (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -166,18 +166,18 @@ end
 
 
 
-function Ptrain_v_Callback(hObject, eventdata, handles)
-% hObject    handle to Ptrain_v (see GCBO)
+function PT_Callback(hObject, eventdata, handles)
+% hObject    handle to PT (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of Ptrain_v as text
-%        str2double(get(hObject,'String')) returns contents of Ptrain_v as a double
+% Hints: get(hObject,'String') returns contents of PT as text
+%        str2double(get(hObject,'String')) returns contents of PT as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function Ptrain_v_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Ptrain_v (see GCBO)
+function PT_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to PT (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -188,19 +188,19 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in popupmenu1.
-function popupmenu1_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu1 (see GCBO)
+% --- Executes on selection change in DF.
+function DF_Callback(hObject, eventdata, handles)
+% hObject    handle to DF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu1 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu1
+% Hints: contents = cellstr(get(hObject,'String')) returns DF contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from DF
 
 
 % --- Executes during object creation, after setting all properties.
-function popupmenu1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu1 (see GCBO)
+function DF_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to DF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -216,6 +216,8 @@ function TestBTN_Callback(hObject, eventdata, handles)
 % hObject    handle to TestBTN (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+  load('SVM_T') ;
+  SVMtest
 
 
 % --- Executes on button press in TrainBTN.
@@ -223,3 +225,18 @@ function TrainBTN_Callback(hObject, eventdata, handles)
 % hObject    handle to TrainBTN (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+C=str2double(get(handles.C, 'String'));
+ p1 = str2double(get(handles.S, 'String'));    % sigma for RBF, width
+ epsilon = str2double(get(handles.T, 'String')); % threshold for Support Vector Detection
+ filename=get(handles.IND, 'String')
+ switch get(handles.DF,'Value')
+    case 1
+        dataFormat='Row'
+    case 2
+        dataFormat='Column'
+    otherwise
+end
+ Ptrainning=str2double(get(handles.PT, 'String'));
+ supportVectorMachine
+ save('SVM_T');
+

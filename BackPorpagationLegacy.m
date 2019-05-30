@@ -22,16 +22,16 @@ function varargout = BackPorpagationLegacy(varargin)
 
 % Edit the above text to modify the response to help BackPorpagationLegacy
 
-% Last Modified by GUIDE v2.5 15-May-2019 16:23:53
+% Last Modified by GUIDE v2.5 30-May-2019 17:31:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
-                   'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @BackPorpagationLegacy_OpeningFcn, ...
-                   'gui_OutputFcn',  @BackPorpagationLegacy_OutputFcn, ...
-                   'gui_LayoutFcn',  [] , ...
-                   'gui_Callback',   []);
+    'gui_Singleton',  gui_Singleton, ...
+    'gui_OpeningFcn', @BackPorpagationLegacy_OpeningFcn, ...
+    'gui_OutputFcn',  @BackPorpagationLegacy_OutputFcn, ...
+    'gui_LayoutFcn',  [] , ...
+    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
     gui_State.gui_Callback = str2func(varargin{1});
 end
@@ -63,7 +63,7 @@ guidata(hObject, handles);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = BackPorpagationLegacy_OutputFcn(hObject, eventdata, handles) 
+function varargout = BackPorpagationLegacy_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -74,18 +74,18 @@ varargout{1} = handles.output;
 
 
 
-function SizeStr_Callback(hObject, eventdata, handles)
-% hObject    handle to SizeStr (see GCBO)
+function SN_Callback(hObject, eventdata, handles)
+% hObject    handle to SN (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of SizeStr as text
-%        str2double(get(hObject,'String')) returns contents of SizeStr as a double
+% Hints: get(hObject,'String') returns contents of SN as text
+%        str2double(get(hObject,'String')) returns contents of SN as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function SizeStr_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to SizeStr (see GCBO)
+function SN_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to SN (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -97,18 +97,18 @@ end
 
 
 
-function P_training_Callback(hObject, eventdata, handles)
-% hObject    handle to P_training (see GCBO)
+function PT_Callback(hObject, eventdata, handles)
+% hObject    handle to PT (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of P_training as text
-%        str2double(get(hObject,'String')) returns contents of P_training as a double
+% Hints: get(hObject,'String') returns contents of PT as text
+%        str2double(get(hObject,'String')) returns contents of PT as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function P_training_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to P_training (see GCBO)
+function PT_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to PT (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -119,19 +119,19 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in ActFunct.
-function ActFunct_Callback(hObject, eventdata, handles)
-% hObject    handle to ActFunct (see GCBO)
+% --- Executes on selection change in AF.
+function AF_Callback(hObject, eventdata, handles)
+% hObject    handle to AF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns ActFunct contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from ActFunct
+% Hints: contents = cellstr(get(hObject,'String')) returns AF contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from AF
 
 
 % --- Executes during object creation, after setting all properties.
-function ActFunct_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to ActFunct (see GCBO)
+function AF_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to AF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -143,18 +143,18 @@ end
 
 
 
-function DatFile_Callback(hObject, eventdata, handles)
-% hObject    handle to DatFile (see GCBO)
+function IND_Callback(hObject, eventdata, handles)
+% hObject    handle to IND (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of DatFile as text
-%        str2double(get(hObject,'String')) returns contents of DatFile as a double
+% Hints: get(hObject,'String') returns contents of IND as text
+%        str2double(get(hObject,'String')) returns contents of IND as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function DatFile_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to DatFile (see GCBO)
+function IND_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to IND (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -166,18 +166,18 @@ end
 
 
 
-function edit4_Callback(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function E_Callback(hObject, eventdata, handles)
+% hObject    handle to E (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit4 as text
-%        str2double(get(hObject,'String')) returns contents of edit4 as a double
+% Hints: get(hObject,'String') returns contents of E as text
+%        str2double(get(hObject,'String')) returns contents of E as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit4_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function E_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to E (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -188,19 +188,19 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in DatForm.
-function DatForm_Callback(hObject, eventdata, handles)
-% hObject    handle to DatForm (see GCBO)
+% --- Executes on selection change in DF.
+function DF_Callback(hObject, eventdata, handles)
+% hObject    handle to DF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns DatForm contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from DatForm
+% Hints: contents = cellstr(get(hObject,'String')) returns DF contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from DF
 
 
 % --- Executes during object creation, after setting all properties.
-function DatForm_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to DatForm (see GCBO)
+function DF_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to DF (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -212,18 +212,18 @@ end
 
 
 
-function MSEEf_Callback(hObject, eventdata, handles)
-% hObject    handle to MSEEf (see GCBO)
+function M_Callback(hObject, eventdata, handles)
+% hObject    handle to M (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of MSEEf as text
-%        str2double(get(hObject,'String')) returns contents of MSEEf as a double
+% Hints: get(hObject,'String') returns contents of M as text
+%        str2double(get(hObject,'String')) returns contents of M as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function MSEEf_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to MSEEf (see GCBO)
+function M_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to M (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -239,6 +239,21 @@ function TrainBtn_Callback(hObject, eventdata, handles)
 % hObject    handle to TrainBtn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+Number_of_neurons=eval(get(handles.SN, 'String'));
+num_Epoch=str2double(get(handles.E, 'String'));
+mse_thres=str2double(get(handles.M, 'String'));
+filename=get(handles.IND, 'String')
+train_info.training_percentage=str2double(get(handles.PT, 'String'));
+switch get(handles.DF,'Value')
+    case 1
+        dataFormat='Row'
+    case 2
+        dataFormat='Column'
+    otherwise
+end
+Ptrainning=str2double(get(handles.PT, 'String'))
+backPropagation
+save('bp');
 
 
 % --- Executes on button press in TestBtn.
@@ -246,3 +261,5 @@ function TestBtn_Callback(hObject, eventdata, handles)
 % hObject    handle to TestBtn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+ load('bp') ;
+ FeedForward
