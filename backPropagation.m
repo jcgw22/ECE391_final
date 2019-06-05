@@ -15,7 +15,8 @@
 %========== : Initialization of Multilayer Perceptron (MLP) ========
 clc
 fprintf('opening file ...\n');
-data = readmatrix(filename);
+% data = readmatrix(filename);
+data =xlsread(filename);
 if strcmp(dataFormat,'Column')
 data=data';
 end

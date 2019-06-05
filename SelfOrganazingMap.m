@@ -24,7 +24,9 @@
 % % % 
 clc
 fprintf('opening file ...\n');
-trainingData = readmatrix(Inputdata);
+% trainingData = readmatrix(Inputdata);
+
+trainingData =xlsread(filename);
 if strcmp(data_Format,'Row')
     trainingData=trainingData(1:Number_Of_Dimentions,:);
     trainingData=trainingData';
